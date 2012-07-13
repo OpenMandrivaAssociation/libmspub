@@ -50,7 +50,7 @@ The %{name}-doc package contains documentation files for %{name}.
 
 %package	tools
 Summary:	Tools to transform Microsoft Publisher files into other formats
-Group:		Applications/Publishing
+Group:		Publishing
 
 %description tools
 Tools to transform Microsoft Publisher files into other formats.
