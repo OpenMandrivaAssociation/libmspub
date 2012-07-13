@@ -42,7 +42,7 @@ Development files and headers for %{name}.
 
 %package	doc
 Summary:	Documentation of %{name} API
-Group:		Documentation
+Group:		Books/Computer books
 BuildArch:	noarch
 
 %description	doc
