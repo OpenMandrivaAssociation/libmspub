@@ -93,7 +93,6 @@ rm -f %{buildroot}%{_libdir}/*.la
 
 %files doc
 %dir %{_docdir}/%{name}
-%dir %{_docdir}/%{name}/html
 %{_docdir}/%{name}/html
 
 %files tools
