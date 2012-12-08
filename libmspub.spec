@@ -98,3 +98,18 @@ rm -f %{buildroot}%{_libdir}/*.la
 %files tools
 %{_bindir}/pub2raw
 %{_bindir}/pub2xhtml
+
+
+%changelog
+* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 0.0.1-2
++ Revision: 809184
+- rebuild
+
+* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 0.0.1-1
++ Revision: 809175
+- more stupid group bork
+- argh...
+- fix build
+- initial Mandriva package (fedora import)
+- Created package structure for libmspub.
+
