@@ -1,0 +1,11 @@
+--- libmspub-0.0.1/configure.ac.bero	2013-01-16 00:21:26.273174846 +0100
++++ libmspub-0.0.1/configure.ac	2013-01-16 00:21:39.031028110 +0100
+@@ -15,7 +15,7 @@ m4_define([libmspub_version],[libmspub_v
+ # =============
+ AC_INIT([libmspub],[libmspub_version])
+ AC_CONFIG_MACRO_DIR([m4])
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ AM_INIT_AUTOMAKE([1.11 foreign dist-xz dist-bzip2])
+ AM_SILENT_RULES([yes])
+ AC_LANG([C++])

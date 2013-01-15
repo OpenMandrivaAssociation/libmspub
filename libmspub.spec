@@ -5,18 +5,26 @@
 
 Summary:	A library providing ability to interpret and import Microsoft Publisher files
 Name:		libmspub
-Version:	0.0.1
-Release:	2
+Version:	0.0.3
+Release:	1
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 URL:		http://www.freedesktop.org/wiki/Software/libmspub
-Source0:	http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
+Source0:	http://cgit.freedesktop.org/libreoffice/libmspub/snapshot/%{name}-%{version}.tar.gz
+Patch0:		libmspub-automake-1.13.patch
 BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	libwpd-devel
 BuildRequires:	libwpg-devel
 BuildRequires:	zlib-devel
 BuildRequires:	autoconf automake libtool
+
+%track
+prog %name = {
+	url = http://cgit.freedesktop.org/libreoffice/libmspub/
+	version = %version
+	regex = %name-(__VER__)\.tar\.gz
+}
 
 %description
 Libmspub is library providing ability to interpret and import Microsoft
@@ -57,8 +65,8 @@ Tools to transform Microsoft Publisher files into other formats.
 Currently supported: XHTML, raw.
 
 %prep
-
 %setup -q
+%apply_patches
 
 %build
 mkdir -p m4
@@ -81,7 +89,7 @@ sed -i \
 rm -f %{buildroot}%{_libdir}/*.la
 
 %files -n %{libname}
-%doc AUTHORS ChangeLog COPYING.*
+%doc AUTHORS COPYING.*
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
