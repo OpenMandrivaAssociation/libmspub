@@ -1,23 +1,25 @@
 %define lname mspub
-%define major 0
-%define libname %mklibname %{lname} %{major}
-%define develname %mklibname %{lname} -d
+%define api	0.0
+%define major	0
+%define libname %mklibname %{lname} %{api} %{major}
+%define devname %mklibname %{lname} -d
 
 Summary:	A library providing ability to interpret and import Microsoft Publisher files
 Name:		libmspub
-Version:	0.0.3
+Version:	0.0.4
 Release:	1
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
-URL:		http://www.freedesktop.org/wiki/Software/libmspub
+Url:		http://www.freedesktop.org/wiki/Software/libmspub
 Source0:	http://cgit.freedesktop.org/libreoffice/libmspub/snapshot/%{name}-%{version}.tar.gz
-Patch0:		libmspub-automake-1.13.patch
-BuildRequires:	boost-devel
+#Patch0:		libmspub-automake-1.13.patch
+
 BuildRequires:	doxygen
+BuildRequires:	libtool
+BuildRequires:	boost-devel
 BuildRequires:	libwpd-devel
 BuildRequires:	libwpg-devel
-BuildRequires:	zlib-devel
-BuildRequires:	autoconf automake libtool
+BuildRequires:	pkgconfig(zlib)
 
 %track
 prog %name = {
@@ -31,31 +33,6 @@ Libmspub is library providing ability to interpret and import Microsoft
 Publisher content into various applications. You can find it being used
 in libreoffice.
 
-%package -n	%{libname}
-Summary:	Text categorization library
-Group:		System/Libraries
-
-%description -n	%{libname}
-Libmspub is library providing ability to interpret and import Microsoft
-Publisher content into various applications. You can find it being used
-in libreoffice.
-
-%package -n	%{develname}
-Summary:	Development files and headers for %{name}
-Group:		Development/Other
-Provides:	mspub-devel = %{version}-%{release}
-
-%description -n	%{develname}
-Development files and headers for %{name}.
-
-%package	doc
-Summary:	Documentation of %{name} API
-Group:		Books/Computer books
-BuildArch:	noarch
-
-%description	doc
-The %{name}-doc package contains documentation files for %{name}.
-
 %package	tools
 Summary:	Tools to transform Microsoft Publisher files into other formats
 Group:		Publishing
@@ -64,6 +41,25 @@ Group:		Publishing
 Tools to transform Microsoft Publisher files into other formats.
 Currently supported: XHTML, raw.
 
+%package -n	%{libname}
+Summary:	Text categorization library
+Group:		System/Libraries
+Obsoletes:	%{_lib}mspub0 < 0.0.4-1
+
+%description -n	%{libname}
+Libmspub is library providing ability to interpret and import Microsoft
+Publisher content into various applications. You can find it being used
+in libreoffice.
+
+%package -n	%{devname}
+Summary:	Development files and headers for %{name}
+Group:		Development/Other
+Provides:	%{lname}-devel = %{version}-%{release}
+Obsoletes:	%{name}-doc
+
+%description -n	%{devname}
+Development files and headers for %{name}.
+
 %prep
 %setup -q
 %apply_patches
@@ -71,7 +67,6 @@ Currently supported: XHTML, raw.
 %build
 mkdir -p m4
 autoreconf -fi
-
 %configure2_5x \
     --disable-static
 
@@ -83,41 +78,22 @@ sed -i \
 %make
 
 %install
-
 %makeinstall_std
-
-rm -f %{buildroot}%{_libdir}/*.la
-
-%files -n %{libname}
-%doc AUTHORS COPYING.*
-%{_libdir}/lib*.so.%{major}*
-
-%files -n %{develname}
-%dir %{_includedir}/%{name}-0.0
-%dir %{_includedir}/%{name}-0.0/%{name}
-%{_includedir}/%{name}-0.0/%{name}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
-
-%files doc
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/html
 
 %files tools
 %{_bindir}/pub2raw
 %{_bindir}/pub2xhtml
 
+%files -n %{libname}
+%{_libdir}/libmspub-%{api}.so.%{major}*
 
-%changelog
-* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 0.0.1-2
-+ Revision: 809184
-- rebuild
-
-* Fri Jul 13 2012 Oden Eriksson <oeriksson@mandriva.com> 0.0.1-1
-+ Revision: 809175
-- more stupid group bork
-- argh...
-- fix build
-- initial Mandriva package (fedora import)
-- Created package structure for libmspub.
+%files -n %{devname}
+%doc AUTHORS COPYING.*
+%dir %{_includedir}/%{name}-0.0
+%dir %{_includedir}/%{name}-0.0/%{name}
+%{_includedir}/%{name}-0.0/%{name}/*
+%{_libdir}/*.so
+%{_libdir}/pkgconfig/*.pc
+%dir %{_docdir}/%{name}
+%{_docdir}/%{name}/html
 
