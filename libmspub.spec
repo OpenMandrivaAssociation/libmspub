@@ -1,4 +1,4 @@
-%define lname mspub
+%define lname	mspub
 %define api	0.0
 %define major	0
 %define libname %mklibname %{lname} %{api} %{major}
@@ -22,10 +22,10 @@ BuildRequires:	libwpg-devel
 BuildRequires:	pkgconfig(zlib)
 
 %track
-prog %name = {
+prog %{name} = {
 	url = http://cgit.freedesktop.org/libreoffice/libmspub/
-	version = %version
-	regex = %name-(__VER__)\.tar\.gz
+	version = %{version}
+	regex = %{name}-(__VER__)\.tar\.gz
 }
 
 %description
@@ -55,7 +55,7 @@ in libreoffice.
 Summary:	Development files and headers for %{name}
 Group:		Development/Other
 Provides:	%{lname}-devel = %{version}-%{release}
-Obsoletes:	%{name}-doc
+Obsoletes:	%{name}-doc < %{version}-%{release}
 
 %description -n	%{devname}
 Development files and headers for %{name}.
@@ -63,12 +63,12 @@ Development files and headers for %{name}.
 %prep
 %setup -q
 %apply_patches
-
-%build
 mkdir -p m4
 autoreconf -fi
+
+%build
 %configure2_5x \
-    --disable-static
+	--disable-static
 
 sed -i \
     -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
