@@ -54,7 +54,7 @@ in libreoffice.
 %package -n	%{devname}
 Summary:	Development files and headers for %{name}
 Group:		Development/Other
-Requires:	%{libname}-devel = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	%{lname}-devel = %{version}-%{release}
 Obsoletes:	%{name}-doc < %{version}-%{release}
 
