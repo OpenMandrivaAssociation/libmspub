@@ -54,6 +54,7 @@ in libreoffice.
 %package -n	%{devname}
 Summary:	Development files and headers for %{name}
 Group:		Development/Other
+Requires:	%{libname}-devel = %{version}-%{release}
 Provides:	%{lname}-devel = %{version}-%{release}
 Obsoletes:	%{name}-doc < %{version}-%{release}
 
@@ -89,9 +90,9 @@ sed -i \
 
 %files -n %{devname}
 %doc AUTHORS COPYING.*
-%dir %{_includedir}/%{name}-0.0
-%dir %{_includedir}/%{name}-0.0/%{name}
-%{_includedir}/%{name}-0.0/%{name}/*
+%dir %{_includedir}/%{name}-%{api}
+%dir %{_includedir}/%{name}-%{api}/%{name}
+%{_includedir}/%{name}-%{api}/%{name}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %dir %{_docdir}/%{name}
