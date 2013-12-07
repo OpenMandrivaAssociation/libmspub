@@ -7,7 +7,7 @@
 Summary:	A library providing ability to interpret and import Microsoft Publisher files
 Name:		libmspub
 Version:	0.0.4
-Release:	3
+Release:	4
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		http://www.freedesktop.org/wiki/Software/libmspub
