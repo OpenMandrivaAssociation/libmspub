@@ -1,24 +1,22 @@
 %define lname	mspub
-%define api	0.0
-%define major	0
+%define api	0.1
+%define major	1
 %define libname %mklibname %{lname} %{api} %{major}
 %define devname %mklibname %{lname} -d
 
 Summary:	A library providing ability to interpret and import Microsoft Publisher files
 Name:		libmspub
-Version:	0.0.4
-Release:	7
+Version:	0.1.1
+Release:	1
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		http://www.freedesktop.org/wiki/Software/libmspub
-Source0:	http://cgit.freedesktop.org/libreoffice/libmspub/snapshot/%{name}-%{version}.tar.gz
-#Patch0:		libmspub-automake-1.13.patch
+Source0:	http://dev-www.libreoffice.org/src/libmspub/%{name}-%{version}.tar.xz
 
 BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	boost-devel
-BuildRequires:	libwpd-devel
-BuildRequires:	libwpg-devel
+BuildRequires:	pkgconfig(librevenge-0.0)
 BuildRequires:	pkgconfig(zlib)
 
 %track
