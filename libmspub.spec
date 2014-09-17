@@ -66,8 +66,7 @@ mkdir -p m4
 autoreconf -fi
 
 %build
-%configure2_5x \
-	--disable-static
+%configure
 
 sed -i \
     -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
