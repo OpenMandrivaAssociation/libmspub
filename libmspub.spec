@@ -1,3 +1,4 @@
+%define _disable_rebuild_configure 1
 %define lname	mspub
 %define api	0.1
 %define major	1
@@ -62,10 +63,10 @@ Development files and headers for %{name}.
 %prep
 %setup -q
 %apply_patches
-mkdir -p m4
-autoreconf -fi
 
 %build
+export CC=gcc
+export CXX=g++
 %configure
 
 sed -i \
