@@ -2,5 +2,6 @@ removed_sources:
   libmspub-0.0.1.tar.xz: 42dbcff37775f242207797c04778fa8465b0e702
   libmspub-0.0.3.tar.gz: 5b3112068e28a0b4f63b2c1da564477b0240de0f
   libmspub-0.1.1.tar.xz: d3052160c5fd0c116b1e54c7238b1b5fdd8eceff
-sources:
   libmspub-0.1.2.tar.xz: e1bab3a4be9215b69700dcdb81cf27e194097776
+sources:
+  libmspub-0.1.3.tar.xz: 7bfeb84b75142a180a0ababf946c760e122cd5f4
