@@ -17,6 +17,7 @@ BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(librevenge-0.0)
+BuildRequires:	pkgconfig(icu-i18n)
 BuildRequires:	pkgconfig(zlib)
 
 %description
