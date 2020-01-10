@@ -55,7 +55,7 @@ Development files and headers for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 mkdir -p m4
 autoreconf -fi
 
