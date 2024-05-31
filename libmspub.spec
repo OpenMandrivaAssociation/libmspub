@@ -1,13 +1,14 @@
 %define lname	mspub
 %define api	0.1
 %define major	1
-%define libname %mklibname %{lname} %{api} %{major}
+%define oldlibname %mklibname %{lname} %{api} %{major}
+%define libname %mklibname %{lname}
 %define devname %mklibname %{lname} -d
 
 Summary:	A library providing ability to interpret and import Microsoft Publisher files
 Name:		libmspub
 Version:	0.1.4
-Release:	7
+Release:	8
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		http://www.freedesktop.org/wiki/Software/libmspub
@@ -38,6 +39,8 @@ Currently supported: XHTML, raw.
 Summary:	Text categorization library
 Group:		System/Libraries
 Obsoletes:	%{_lib}mspub0 < 0.0.4-1
+# Renamed after 5.0
+%rename %{oldlibname}
 
 %description -n	%{libname}
 Libmspub is library providing ability to interpret and import Microsoft
@@ -55,8 +58,7 @@ Obsoletes:	%{name}-doc < %{version}-%{release}
 Development files and headers for %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 mkdir -p m4
 autoreconf -fi
 
@@ -89,4 +91,3 @@ sed -i \
 %{_libdir}/pkgconfig/*.pc
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/html
-
