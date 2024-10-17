@@ -11,7 +11,7 @@ Version:	0.1.4
 Release:	9
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
-Url:		http://www.freedesktop.org/wiki/Software/libmspub
+Url:		https://www.freedesktop.org/wiki/Software/libmspub
 Source0:	http://dev-www.libreoffice.org/src/libmspub/%{name}-%{version}.tar.xz
 Patch0:     gcc10.patch
 
