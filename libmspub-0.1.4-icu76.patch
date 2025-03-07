@@ -1,0 +1,12 @@
+diff -up libmspub-0.1.4/configure.ac.omv~ libmspub-0.1.4/configure.ac
+--- libmspub-0.1.4/configure.ac.omv~	2025-03-07 19:44:14.826026358 +0100
++++ libmspub-0.1.4/configure.ac	2025-03-07 19:44:25.913508288 +0100
+@@ -104,7 +104,7 @@ AC_CHECK_HEADERS(
+ # ========
+ # Find icu
+ # ========
+-PKG_CHECK_MODULES([ICU], [icu-i18n])
++PKG_CHECK_MODULES([ICU], [icu-i18n icu-uc])
+ AC_SUBST(ICU_CFLAGS)
+ AC_SUBST(ICU_LIBS)
+ 

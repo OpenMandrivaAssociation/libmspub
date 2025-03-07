@@ -8,12 +8,11 @@
 Summary:	A library providing ability to interpret and import Microsoft Publisher files
 Name:		libmspub
 Version:	0.1.4
-Release:	10
+Release:	11
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		https://www.freedesktop.org/wiki/Software/libmspub
 Source0:	http://dev-www.libreoffice.org/src/libmspub/%{name}-%{version}.tar.xz
-Patch0:     gcc10.patch
 
 BuildRequires:	doxygen
 BuildRequires:	libtool
@@ -21,6 +20,10 @@ BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(librevenge-0.0)
 BuildRequires:	pkgconfig(icu-i18n)
 BuildRequires:	pkgconfig(zlib)
+
+%patchlist
+gcc10.patch
+libmspub-0.1.4-icu76.patch
 
 %description
 Libmspub is library providing ability to interpret and import Microsoft
