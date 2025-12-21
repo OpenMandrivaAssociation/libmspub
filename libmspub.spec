@@ -14,6 +14,11 @@ License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		https://www.freedesktop.org/wiki/Software/libmspub
 Source0:	http://dev-www.libreoffice.org/src/libmspub/%{name}-%{version}.tar.xz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	boost-devel
