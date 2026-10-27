@@ -24,9 +24,11 @@ BuildRequires:	libtool
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(librevenge-0.0)
 BuildRequires:	pkgconfig(icu-i18n)
+BuildRequires:	pkgconfig(icu-uc)
 BuildRequires:	pkgconfig(zlib)
 
 %patchlist
+libmspub-0.1.5-icu-uc.patch
 # dropped (no longer applies): gcc10.patch
 # dropped (no longer applies): libmspub-0.1.5-icu76.patch
 
