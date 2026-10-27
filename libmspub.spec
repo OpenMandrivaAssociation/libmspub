@@ -72,16 +72,20 @@ autoreconf -fi
 
 %build
 %configure
-
+# slibtool writes slibtool.cfg, not a GNU libtool script.
+if [ -f libtool ]; then
 sed -i \
     -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
     -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
     libtool
+fi
 
-%make_build
+%make_build LIBTOOL=slibtool-shared
 
 %install
-%make_install
+# doxygen no longer emits the diagram pngs the Makefile installs.
+find . -type d -path '*/docs/doxygen/html' -exec sh -c 'compgen -G "$1/*.png" >/dev/null || touch "$1/placeholder.png"' _ {} \;
+%make_install LIBTOOL=slibtool-shared
 
 %files tools
 %{_bindir}/pub2raw
